@@ -216,4 +216,273 @@
         input[type="checkbox"] { margin-right: 10px; transform: scale(1.2); }
         label { cursor: pointer; }
         
-        /* New Style for Nutrition Info
+        /* New Style for Nutrition Info */
+        .nutrition-info {
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid var(--primary-color);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            background-color: #f7f7f7;
+            font-size: 0.85rem;
+        }
+        
+        .nutrition-info table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .nutrition-info th, .nutrition-info td {
+            padding: 4px 8px;
+            text-align: left;
+        }
+        
+        .nutrition-info th {
+            color: var(--primary-color);
+            font-weight: bold;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button id="menu-toggle" aria-label="Open Navigation Menu">☰</button>
+        <h1>My Recipe Book</h1>
+    </header>
+    
+    <nav id="sidebar">
+        <div id="sidebar-controls">
+            <a href="#" class="sidebar-btn" title="Go Home" onclick="selectRecipe(event, '')">🏠</a>
+            <button id="sidebar-close" class="sidebar-btn" aria-label="Close Navigation Menu" onclick="toggleMenu()">&times;</button>
+        </div>
+
+        <div id="search-container">
+            <input type="text" id="recipe-search" placeholder="Search Recipes..." onkeyup="filterRecipes()">
+        </div>
+
+        <div id="recipe-links">
+            <a href="#pancakes" onclick="selectRecipe(event, 'pancakes')">Low-Carb Choco Protein Pancakes</a>
+            <a href="#icecream" onclick="selectRecipe(event, 'icecream')">Low-Carb Vanilla Ice Cream</a>
+            <a href="#matarpaneer" onclick="selectRecipe(event, 'matarpaneer')">Matar Paneer</a>
+        </div>
+    </nav>
+    
+    <div class="content-wrapper">
+
+        <div class="recipe-card" id="pancakes">
+            <h2 class="recipe-title">Low-Carb Choco Protein Pancakes</h2>
+            <span class="yield-tag">Yield: 8 pancakes</span>
+            
+            <div class="nutrition-info">
+                <p><strong>Total Servings:</strong> 8 pancakes</p>
+                <table>
+                    <caption>**Nutrition Per Serving** (3 pancakes)</caption>
+                    <tr><th>Calories</th><td>310 kcal</td></tr>
+                    <tr><th>Protein</th><td>26 g</td></tr>
+                    <tr><th>Carbs (Net)</th><td>10 g</td></tr>
+                    <tr><th>Fiber</th><td>6 g</td></tr>
+                    <tr><th>Fat</th><td>18 g</td></tr>
+                    <tr><th>Added Sugar</th><td>0 g</td></tr>
+                </table>
+            </div>
+
+            <h3>Ingredients</h3>
+            <ul>
+                <li><label><input type="checkbox"> ¾ cup almond flour</label></li>
+                <li><label><input type="checkbox"> ¼ cup quick oats (blended into flour)</label></li>
+                <li><label><input type="checkbox"> 1 egg</label></li>
+                <li><label><input type="checkbox"> ⅔ cup unsweetened almond milk</label></li>
+                <li><label><input type="checkbox"> 1 scoop chocolate protein powder</label></li>
+                <li><label><input type="checkbox"> 1 tsp baking powder</label></li>
+                <li><label><input type="checkbox"> 1 tsp vanilla extract</label></li>
+                <li><label><input type="checkbox"> Pinch of salt</label></li>
+                <li><label><input type="checkbox"> 1 tbsp melted butter or coconut oil</label></li>
+            </ul>
+
+            <h3>Instructions</h3>
+            <ol>
+                <li>Blend quick oats into a fine flour.</li>
+                <li>Mix all ingredients in a bowl or blender until smooth.</li>
+                <li>Let batter rest for 2–3 minutes.</li>
+                <li>Cook on a lightly oiled pan over medium-low heat.</li>
+                <li>Flip when bubbles form and cook until set.</li>
+            </ol>
+        </div>
+
+        <div class="recipe-card" id="icecream">
+            <h2 class="recipe-title">Low-Carb Vanilla Ice Cream</h2>
+            <span class="yield-tag">Yield: 6 scoops (~½ cup each)</span>
+
+            <div class="nutrition-info">
+                <p><strong>Total Servings:</strong> 6 scoops</p>
+                <table>
+                    <caption>**Nutrition Per Serving** (1 scoop)</caption>
+                    <tr><th>Calories</th><td>175 kcal</td></tr>
+                    <tr><th>Protein</th><td>5 g</td></tr>
+                    <tr><th>Carbs (Net)</th><td>5 g</td></tr>
+                    <tr><th>Fiber</th><td>0 g</td></tr>
+                    <tr><th>Fat</th><td>15 g</td></tr>
+                    <tr><th>Added Sugar</th><td>0 g</td></tr>
+                </table>
+            </div>
+            
+            <h3>Ingredients</h3>
+            <ul>
+                <li><label><input type="checkbox"> 2¼ cups unsweetened almond milk</label></li>
+                <li><label><input type="checkbox"> 4 egg yolks</label></li>
+                <li><label><input type="checkbox"> 7 tbsp allulose (⅓ cup + 4 tbsp)</label></li>
+                <li><label><input type="checkbox"> 1–1½ tsp vanilla extract or 5–10 drops Capella Vanilla Bean Ice Cream</label></li>
+                <li><label><input type="checkbox"> Pinch of salt</label></li>
+                <li><label><input type="checkbox"> ¼ tsp xanthan gum</label></li>
+            </ul>
+
+            <h3>Instructions</h3>
+            <ol>
+                <li>Whisk egg yolks and allulose until smooth and slightly pale.</li>
+                <li>Heat almond milk until steaming (don’t boil).</li>
+                <li>Temper the eggs by slowly whisking the hot milk into the yolk mixture.</li>
+                <li>Cook the base: Return everything to the pan and cook on low, stirring constantly, until it lightly thickens (170–175°F / 77–80°C).</li>
+                <li>Flavor + stabilize: Remove from heat and whisk in vanilla, salt, and xanthan gum.</li>
+                <li>Chill the custard completely in the fridge (2–4 hours).</li>
+                <li>Freeze step 1: Pour into a shallow dish and freeze for 30–45 minutes.</li>
+                <li>Break up ice: Whisk or blend, then return to freezer.</li>
+                <li>Repeat mixing every 30–45 minutes for 3–4 rounds.</li>
+                <li>Final freeze until firm and scoopable.</li>
+            </ol>
+
+            <div class="notes">
+                <h3>Quick Notes</h3>
+                <ul>
+                    <li>**Allulose** keeps the texture soft and scoopable.</li>
+                    <li>**Xanthan gum** reduces iciness and adds creaminess.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="recipe-card" id="matarpaneer">
+            <h2 class="recipe-title">Matar Paneer</h2>
+            <span class="yield-tag">Yield: 4 servings</span>
+
+            <div class="nutrition-info">
+                <p><strong>Total Servings:</strong> 4 servings</p>
+                <table>
+                    <caption>**Nutrition Per Serving** (1 portion)</caption>
+                    <tr><th>Calories</th><td>450 kcal</td></tr>
+                    <tr><th>Protein</th><td>25 g</td></tr>
+                    <tr><th>Carbs (Net)</th><td>30 g</td></tr>
+                    <tr><th>Fiber</th><td>10 g</td></tr>
+                    <tr><th>Fat</th><td>27 g</td></tr>
+                    <tr><th>Added Sugar</th><td>1 g</td></tr>
+                </table>
+            </div>
+
+            <h3>Ingredients: To Saute & Puree</h3>
+            <ul>
+                <li><label><input type="checkbox"> 1 tablespoon (15 ml) oil</label></li>
+                <li><label><input type="checkbox"> 1 to 2 green cardamoms (optional)</label></li>
+                <li><label><input type="checkbox"> 2 tablespoons ginger-garlic paste (substituted for fresh ginger/garlic)</label></li>
+                <li><label><input type="checkbox"> 1 cup (110 grams) onions cubed (1 large or 2 medium, weighed after chopping)</label></li>
+                <li><label><input type="checkbox"> 1½ to 1¾ cups (340 grams) tomatoes (2 to 3 large, fine chopped)</label></li>
+                <li><label><input type="checkbox"> 12 (20 grams) cashewnuts (or soaked almonds)</label></li>
+                <li><label><input type="checkbox"> ½ teaspoon salt (plus more to adjust at the end)</label></li>
+            </ul>
+            
+            <h3>Ingredients: For Matar Paneer Gravy</h3>
+            <ul>
+                <li><label><input type="checkbox"> 1½ tablespoon (22 ml) ghee or oil (plus ½ tbsp more if you want to fry paneer)</label></li>
+                <li><label><input type="checkbox"> 1 inch cinnamon piece (dalchini, optional)</label></li>
+                <li><label><input type="checkbox"> 1 small bay leaf (tej patta, optional)</label></li>
+                <li><label><input type="checkbox"> ¼ teaspoon turmeric</label></li>
+                <li><label><input type="checkbox"> ¾ to 1 teaspoon Kashmiri red chili powder (adjust to taste)</label></li>
+                <li><label><input type="checkbox"> ¾ to 1 teaspoon garam masala (adjust to taste)</label></li>
+                <li><label><input type="checkbox"> ½ to ¾ teaspoon coriander powder</label></li>
+                <li><label><input type="checkbox"> 1 cup (160 grams) green peas (matar, frozen or fresh)</label></li>
+                <li><label><input type="checkbox"> 1 to 1¼ cup water (adjust as required)</label></li>
+                <li><label><input type="checkbox"> 1 green chili (deseeded & slit, optional)</label></li>
+                <li><label><input type="checkbox"> 250 grams (8 to 9 oz) paneer (diced to ¾ inch)</label></li>
+                <li><label><input type="checkbox"> 1 teaspoon kasuri methi (dried fenugreek leaves)</label></li>
+                <li><label><input type="checkbox"> 1 teaspoon sugar (optional, to balance the flavors)</label></li>
+                <li><label><input type="checkbox"> 2 tablespoon coriander leaves (cilantro, fine chopped)</label></li>
+                <li><label><input type="checkbox"> (Heavy cream/double cream is omitted)</label></li>
+            </ul>
+
+            <h3>Instructions: Preparation (To Saute & Puree)</h3>
+            <ol>
+                <li>Pour oil to a hot pan and add green cardamoms (optional). Add the onions.</li>
+                <li>Saute the onions until they are about halfway cooked (translucent, &approx; 3-4 mins). Now, add the 2 tablespoons of ginger-garlic paste and continue sautéing until the onions are light golden (&approx; 2-3 mins more).</li>
+                <li>Add tomatoes, cashews and salt. Saute for 2 to 3 mins and cook covered until mushy and soft. If the pan dries out, add a splash of water while you cook.</li>
+                <li>Cool this and transfer to a blender. Blend to a smooth puree.</li>
+            </ol>
+            
+            <h3>Instructions: How to make Matar Paneer</h3>
+            <ol>
+                <li>Heat ghee or oil in the same pan. Add cinnamon & bay leaf, let sizzle in oil for a minute.</li>
+                <li>Lower the heat completely and stir in turmeric, chili powder, garam masala and coriander powder. Transfer the pureed onion tomato masala. (If your puree isn't smooth, strain it directly into the pan).</li>
+                <li>Saute for 2 to 3 mins until the masala comes together and turns thick. Stir in the rinsed green peas and water to make a gravy.</li>
+                <li>Bring to a boil and cook partially covered on a medium heat, until the gravy turns thick and traces of fat are visible (&approx; 10-12 mins).</li>
+                <li>Optionally fry paneer: Spread and heat ½ tablespoon ghee in a non-stick pan and place the diced paneer. Fry on a medium high heat until golden, for 3 mins. Turn them to the other side with a tong and repeat the process.</li>
+                <li>Crush kasuri methi in your palm and add it.</li>
+                <li>Add slit deseeded green chili, sugar (both optional) and paneer. Mix and taste test to adjust salt and garam masala.</li>
+                <li>Cook for 2 mins for the paneer to heat through and turn off. Garnish with coriander leaves.</li>
+                <li>Serve matar paneer with Basmati rice, jeera rice, naan or paratha.</li>
+            </ol>
+        </div>
+        
+        <div id="default-view">
+            <h2>Welcome to My Recipe Book!</h2>
+            <p>Tap the ☰ icon to open the navigation sidebar and select a recipe.</p>
+        </div>
+
+    </div> <script>
+        const toggleButton = document.getElementById('menu-toggle');
+        const body = document.body;
+        const searchInput = document.getElementById('recipe-search');
+        const recipeLinksContainer = document.getElementById('recipe-links');
+        const recipeLinks = recipeLinksContainer.getElementsByTagName('a');
+
+        // Toggles the 'sidebar-open' class on the body to show/hide the menu
+        function toggleMenu() {
+            body.classList.toggle('sidebar-open');
+        }
+
+        // Handles recipe selection, scrolling, and menu closing
+        function selectRecipe(event, id) {
+            // Only prevent default if an actual hash is being set (not for the Home button)
+            if (id !== '') {
+                event.preventDefault(); 
+            }
+            
+            // Set the hash, clearing it for the home button
+            window.location.hash = id;
+            
+            // Fix using a small delay to reset the scroll position
+            setTimeout(() => {
+                window.scrollTo(0, 0); 
+            }, 1); 
+
+            body.classList.remove('sidebar-open');
+        }
+
+        // Filters recipe links based on search input (New Function)
+        function filterRecipes() {
+            const filter = searchInput.value.toUpperCase();
+            
+            for (let i = 0; i < recipeLinks.length; i++) {
+                const link = recipeLinks[i];
+                const textValue = link.textContent || link.innerText;
+                
+                if (textValue.toUpperCase().indexOf(filter) > -1) {
+                    link.style.display = "";
+                } else {
+                    link.style.display = "none";
+                }
+            }
+        }
+
+        // Attach event listener to the hamburger button
+        toggleButton.addEventListener('click', toggleMenu);
+    </script>
+
+</body>
+</html>
