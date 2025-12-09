@@ -24,8 +24,8 @@
             --search-input-bg: #6F2856; 
             /* NEW SUBTLE BORDER COLOR */
             --subtle-border: rgba(240, 230, 210, 0.2); 
-            /* NEW ICON SIZE VARIABLE */
-            --icon-size: 1.8rem; 
+            /* UPDATED ICON SIZE VARIABLE */
+            --icon-size: 1.5rem; 
         }
 
         body {
@@ -114,7 +114,7 @@
             background: none;
             border: none;
             color: white;
-            font-size: 2rem;
+            /* Note: font-size is now overridden by #home-icon and #close-icon styles below */
             cursor: pointer;
             padding: 5px;
             line-height: 1;
@@ -137,7 +137,7 @@
         
         /* Explicitly define the size and color for the control icons */
         #home-icon, #close-icon {
-            font-size: var(--icon-size); /* Set to the new variable size */
+            font-size: var(--icon-size); /* Uses the new smaller variable size */
             color: white; /* Ensure color is white */
         }
 
