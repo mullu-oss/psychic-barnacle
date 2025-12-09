@@ -24,6 +24,8 @@
             --search-input-bg: #6F2856; 
             /* NEW SUBTLE BORDER COLOR */
             --subtle-border: rgba(240, 230, 210, 0.2); 
+            /* NEW ICON SIZE VARIABLE */
+            --icon-size: 1.8rem; 
         }
 
         body {
@@ -107,7 +109,7 @@
             flex-shrink: 0; 
         }
         
-        /* Control Buttons (New) */
+        /* Control Buttons (General Style) */
         .sidebar-btn {
             background: none;
             border: none;
@@ -131,6 +133,12 @@
         
         .sidebar-btn:hover {
             color: var(--primary-color);
+        }
+        
+        /* Explicitly define the size and color for the control icons */
+        #home-icon, #close-icon {
+            font-size: var(--icon-size); /* Set to the new variable size */
+            color: white; /* Ensure color is white */
         }
 
         /* Search Bar (New) */
@@ -277,8 +285,8 @@
     
     <nav id="sidebar">
         <div id="sidebar-controls">
-            <a href="#" class="sidebar-btn" title="Go Home" onclick="selectRecipe(event, '')">🏠</a>
-            <button id="sidebar-close" class="sidebar-btn" aria-label="Close Navigation Menu" onclick="toggleMenu()">&times;</button>
+            <a href="#" id="home-icon" class="sidebar-btn" title="Go Home" onclick="selectRecipe(event, '')">&#8966;</a>
+            <button id="close-icon" class="sidebar-btn" aria-label="Close Navigation Menu" onclick="toggleMenu()">&times;</button>
         </div>
 
         <div id="search-container">
