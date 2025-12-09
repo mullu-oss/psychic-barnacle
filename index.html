@@ -16,15 +16,15 @@
         }
 
         body {
-            /* *** FONT CHANGE HERE: Trebuchet MS (Sans-Serif) *** */
+            /* *** UPDATED: Font size 0.9rem (main text) and line height 1.5 *** */
             font-family: 'Trebuchet MS', Helvetica, sans-serif;
+            font-size: 0.9rem; 
+            line-height: 1.5; 
             
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding: 0; 
-            line-height: 1.5;
-            font-size: 0.9rem
             overflow-x: hidden;
         }
 
@@ -129,7 +129,7 @@
             padding: 8px;
             border: none;
             border-radius: 4px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             box-sizing: border-box;
             background-color: #445869;
             color: white;
@@ -148,7 +148,9 @@
         #sidebar a {
             padding: 15px 15px;
             text-decoration: none;
-            font-size: 1.1rem;
+            /* *** UPDATED: Font size 0.9rem and line height 1.5 *** */
+            font-size: 0.9rem; 
+            line-height: 1.5;
             color: #ccc;
             display: block;
             border-bottom: 1px solid #3c5064;
@@ -226,7 +228,7 @@
     
     <nav id="sidebar">
         <div id="sidebar-controls">
-            <a href="#" class="sidebar-btn" title="Go Home" onclick="selectRecipe(event, '')">🏠</a>
+            <a href="#" class="sidebar-btn" title="Go Home" onclick="selectRecipe(event, '')">⌂</a>
             <button id="sidebar-close" class="sidebar-btn" aria-label="Close Navigation Menu" onclick="toggleMenu()">&times;</button>
         </div>
 
