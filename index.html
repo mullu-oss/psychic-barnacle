@@ -123,6 +123,12 @@
             transition: color 0.2s;
         }
         
+        /* Links within controls need text color */
+        #sidebar-controls a {
+            color: white; 
+            text-decoration: none;
+        }
+        
         .sidebar-btn:hover {
             color: var(--primary-color);
         }
@@ -131,7 +137,6 @@
         #search-container {
             padding: 10px;
             background-color: var(--cookbook-dark-bg); 
-            /* UPDATED BORDER */
             border-bottom: 1px solid var(--subtle-border); 
             flex-shrink: 0;
         }
@@ -157,19 +162,19 @@
             flex-grow: 1;
         }
 
-        #sidebar a {
+        /* TARGETING LINKS ONLY INSIDE #recipe-links to remove border from home button */
+        #recipe-links a {
             padding: 15px 15px;
             text-decoration: none;
             font-size: 0.9rem; 
             line-height: 1.5;
             color: var(--cookbook-light-text);
             display: block;
-            /* UPDATED BORDER */
             border-bottom: 1px solid var(--subtle-border); 
             transition: color 0.3s, background-color 0.3s;
         }
 
-        #sidebar a:hover {
+        #recipe-links a:hover {
             color: white;
             background-color: var(--cookbook-medium-bg); 
         }
