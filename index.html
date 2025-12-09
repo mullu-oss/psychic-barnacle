@@ -22,6 +22,8 @@
             --cookbook-light-text: #F0E6D2; /* Cream/Off-White */
             /* NEW SEARCH INPUT BACKGROUND */
             --search-input-bg: #6F2856; 
+            /* NEW SUBTLE BORDER COLOR */
+            --subtle-border: rgba(240, 230, 210, 0.2); 
         }
 
         body {
@@ -129,7 +131,8 @@
         #search-container {
             padding: 10px;
             background-color: var(--cookbook-dark-bg); 
-            border-bottom: 1px solid #3c5064; 
+            /* UPDATED BORDER */
+            border-bottom: 1px solid var(--subtle-border); 
             flex-shrink: 0;
         }
 
@@ -161,7 +164,8 @@
             line-height: 1.5;
             color: var(--cookbook-light-text);
             display: block;
-            border-bottom: 1px solid #3c5064; 
+            /* UPDATED BORDER */
+            border-bottom: 1px solid var(--subtle-border); 
             transition: color 0.3s, background-color 0.3s;
         }
 
