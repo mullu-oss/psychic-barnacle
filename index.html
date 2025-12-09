@@ -207,7 +207,7 @@
 
         /* --- Standard Content Formatting --- */
         .recipe-title { font-size: 1.5rem; color: var(--primary-color); margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .yield-tag { background-color: #eef2f7; color: #555; padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; display: inline-block; margin-bottom: 15px; }
+        /* REMOVED .yield-tag styling because the element is removed from HTML */
         h3 { margin-top: 20px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; color: #555; }
         .notes h3 { color: var(--accent-color); }
         ul { padding-left: 0; list-style-type: none; }
@@ -272,17 +272,15 @@
 
         <div class="recipe-card" id="pancakes">
             <h2 class="recipe-title">Low-Carb Choco Protein Pancakes</h2>
-            <span class="yield-tag">Yield: 8 pancakes</span>
-            
             <div class="nutrition-info">
                 <p><strong>Total Servings:</strong> 8 pancakes</p>
                 <table>
-                    <caption>**Nutrition Per Serving** (3 pancakes)</caption>
-                    <tr><th>Calories</th><td>310 kcal</td></tr>
-                    <tr><th>Protein</th><td>26 g</td></tr>
-                    <tr><th>Carbs (Net)</th><td>10 g</td></tr>
-                    <tr><th>Fiber</th><td>6 g</td></tr>
-                    <tr><th>Fat</th><td>18 g</td></tr>
+                    <caption>**Nutrition Per Serving** (1 pancake)</caption>
+                    <tr><th>Calories</th><td>103 kcal</td></tr>
+                    <tr><th>Protein</th><td>8.7 g</td></tr>
+                    <tr><th>Carbs (Net)</th><td>3.3 g</td></tr>
+                    <tr><th>Fiber</th><td>2 g</td></tr>
+                    <tr><th>Fat</th><td>6 g</td></tr>
                     <tr><th>Added Sugar</th><td>0 g</td></tr>
                 </table>
             </div>
@@ -312,8 +310,6 @@
 
         <div class="recipe-card" id="icecream">
             <h2 class="recipe-title">Low-Carb Vanilla Ice Cream</h2>
-            <span class="yield-tag">Yield: 6 scoops (~½ cup each)</span>
-
             <div class="nutrition-info">
                 <p><strong>Total Servings:</strong> 6 scoops</p>
                 <table>
@@ -362,8 +358,6 @@
         
         <div class="recipe-card" id="matarpaneer">
             <h2 class="recipe-title">Matar Paneer</h2>
-            <span class="yield-tag">Yield: 4 servings</span>
-
             <div class="nutrition-info">
                 <p><strong>Total Servings:</strong> 4 servings</p>
                 <table>
