@@ -6,9 +6,7 @@
     <title>My Recipe Book</title>
     <style>
         :root {
-            /* UPDATED PRIMARY COLOR (HEADER, ACCENT BORDER, TEXT) */
             --primary-color: #8B0000; /* Deep Red */
-            /* UPDATED BACKGROUND COLOR (COOKBOOK PAPER) */
             --bg-color: #FDF5E6; 
             --card-bg: #ffffff;
             --text-color: #333333;
@@ -16,24 +14,18 @@
             --sidebar-width: 250px;
             --header-height: 55px;
             
-            /* COOKBOOK COLORS */
-            --cookbook-dark-bg: #581845; /* Deep Maroon */
-            --cookbook-medium-bg: #884B79; /* Lighter Maroon */
-            --cookbook-light-text: #F0E6D2; /* Cream/Off-White */
-            /* NEW SEARCH INPUT BACKGROUND */
+            --cookbook-dark-bg: #581845;
+            --cookbook-medium-bg: #884B79;
+            --cookbook-light-text: #F0E6D2;
             --search-input-bg: #6F2856; 
-            /* NEW SUBTLE BORDER COLOR */
             --subtle-border: rgba(240, 230, 210, 0.2); 
-            /* ICON SIZE VARIABLE */
             --icon-size: 1.5rem; 
         }
 
         body {
-            /* STANDARDIZED FONT FAMILY ACROSS THE BOARD - GEORGIA */
             font-family: Georgia, serif; 
             font-size: 0.9rem; 
             line-height: 1.5; 
-            
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -41,9 +33,8 @@
             overflow-x: hidden;
         }
 
-        /* --- Header Styles (FIXED and CENTERED with Flexbox) --- */
+        /* --- Header Styles --- */
         header {
-            /* Uses the new, darker --primary-color */
             background-color: var(--primary-color);
             color: white;
             height: var(--header-height);
@@ -52,12 +43,10 @@
             top: 0;
             z-index: 500;
             box-sizing: border-box; 
-            
-            /* Title Centering Logic */
             display: flex;
             justify-content: center; 
             align-items: center; 
-            padding: 15px 60px; /* Balanced padding */
+            padding: 15px 60px;
         }
 
         h1 {
@@ -66,7 +55,7 @@
             margin: 0;
         }
 
-        /* --- Sidebar Toggle (Hamburger Button) --- */
+        /* --- Sidebar & Controls --- */
         #menu-toggle {
             position: absolute;
             top: 50%; 
@@ -82,7 +71,6 @@
             line-height: 1;
         }
 
-        /* --- Sidebar Styling (Fixed hidden position) --- */
         #sidebar {
             height: 100%;
             width: var(--sidebar-width);
@@ -92,15 +80,12 @@
             left: -250px; 
             background-color: var(--cookbook-dark-bg);
             padding-top: 0; 
-            /* Sidebar itself already transitions smoothly */
             transition: left 0.3s ease-in-out;
             box-shadow: 2px 0 5px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
-            /* Font now inherited from body (Georgia) */
         }
 
-        /* Sidebar Header Container for Controls (New) */
         #sidebar-controls {
             display: flex;
             justify-content: space-between;
@@ -112,7 +97,6 @@
             flex-shrink: 0; 
         }
         
-        /* Control Buttons (General Style) */
         .sidebar-btn {
             background: none;
             border: none;
@@ -127,23 +111,10 @@
             transition: color 0.2s;
         }
         
-        /* Links within controls need text color */
-        #sidebar-controls a {
-            color: white; 
-            text-decoration: none;
-        }
-        
-        .sidebar-btn:hover {
-            color: var(--primary-color);
-        }
-        
-        /* Explicitly define the size and color for the control icons */
-        #home-icon, #close-icon {
-            font-size: var(--icon-size); 
-            color: white; 
-        }
+        #sidebar-controls a { color: white; text-decoration: none; }
+        .sidebar-btn:hover { color: var(--primary-color); }
+        #home-icon, #close-icon { font-size: var(--icon-size); color: white; }
 
-        /* Search Bar (New) */
         #search-container {
             padding: 10px;
             background-color: var(--cookbook-dark-bg); 
@@ -161,18 +132,9 @@
             background-color: var(--search-input-bg);
             color: white;
         }
-        
-        #recipe-search::placeholder {
-            color: #ccc;
-        }
+        #recipe-search::placeholder { color: #ccc; }
 
-        /* Recipe Links Container */
-        #recipe-links {
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-
-        /* TARGETING LINKS ONLY INSIDE #recipe-links to remove border from home button */
+        #recipe-links { overflow-y: auto; flex-grow: 1; }
         #recipe-links a {
             padding: 15px 15px;
             text-decoration: none;
@@ -183,28 +145,13 @@
             border-bottom: 1px solid var(--subtle-border); 
             transition: color 0.3s, background-color 0.3s;
         }
+        #recipe-links a:hover { color: white; background-color: var(--cookbook-medium-bg); }
 
-        #recipe-links a:hover {
-            color: white;
-            background-color: var(--cookbook-medium-bg); 
-        }
+        body.sidebar-open #sidebar { left: 0; }
+        .content-wrapper { padding-top: 65px; transition: transform 0.3s ease-in-out; }
+        body.sidebar-open .content-wrapper { transform: translateX(var(--sidebar-width)); }
 
-        /* --- Sidebar Open State (Controlled by JS) --- */
-        body.sidebar-open #sidebar {
-            left: 0;
-        }
-        
-        .content-wrapper {
-            padding-top: 65px; 
-            /* ADDED TRANSITION FOR SMOOTH CONTENT SHIFT */
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        body.sidebar-open .content-wrapper {
-            transform: translateX(var(--sidebar-width)); 
-        }
-
-        /* --- Recipe Visibility Logic --- */
+        /* --- Recipe Card Styling --- */
         .recipe-card {
             display: none; 
             background-color: var(--card-bg);
@@ -214,10 +161,7 @@
             margin: 20px auto; 
             max-width: 600px;
         }
-        
-        .recipe-card:target {
-            display: block; 
-        }
+        .recipe-card:target { display: block; }
         
         #default-view {
             display: block;
@@ -231,11 +175,10 @@
         
         #pancakes:target ~ #default-view,
         #icecream:target ~ #default-view,
-        #matarpaneer:target ~ #default-view {
-            display: none;
-        }
+        #matarpaneer:target ~ #default-view,
+        #chettinadchicken:target ~ #default-view { display: none; }
 
-        /* --- Standard Content Formatting --- */
+        /* --- Content Formatting --- */
         .recipe-title { 
             font-size: 1.5rem; 
             color: var(--primary-color); 
@@ -244,14 +187,49 @@
             padding-bottom: 10px; 
         }
         h3 { margin-top: 20px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; color: #555; }
+        h4 { margin-top: 15px; margin-bottom: 5px; font-size: 1.05rem; color: var(--primary-color); }
         .notes h3 { color: var(--accent-color); }
-        ul { padding-left: 0; list-style-type: none; }
-        ol { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        input[type="checkbox"] { margin-right: 10px; transform: scale(1.2); }
-        label { cursor: pointer; }
+
+        /* --- Lists Styling --- */
         
-        /* New Style for Nutrition Info */
+        /* 1. Ingredients: Bulleted Lists */
+        ul { 
+            padding-left: 20px; 
+            list-style-type: disc; /* Ensure bullets show */
+        }
+        
+        /* 2. Instructions: Checkbox Lists (No bullets/numbers) */
+        .instructions-list {
+            padding-left: 0;
+            list-style-type: none;
+        }
+        
+        .instructions-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Checkbox & Label Styling */
+        .instructions-list label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+
+        .instructions-list input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 4px; /* Align check with text */
+            transform: scale(1.2);
+            flex-shrink: 0;
+        }
+
+        /* 3. Strike-through Logic */
+        .instructions-list input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            color: #888;
+            transition: color 0.3s;
+        }
+        
+        /* Nutrition Info Table */
         .nutrition-info {
             border: 1px solid #e0e0e0;
             border-left: 4px solid var(--primary-color);
@@ -261,22 +239,9 @@
             background-color: #f7f7f7;
             font-size: 0.85rem;
         }
-        
-        .nutrition-info table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .nutrition-info th, .nutrition-info td {
-            padding: 4px 8px;
-            text-align: left;
-        }
-        
-        .nutrition-info th {
-            color: var(--primary-color);
-            font-weight: bold;
-            width: 50%;
-        }
+        .nutrition-info table { width: 100%; border-collapse: collapse; }
+        .nutrition-info th, .nutrition-info td { padding: 4px 8px; text-align: left; }
+        .nutrition-info th { color: var(--primary-color); font-weight: bold; width: 50%; }
     </style>
 </head>
 <body>
@@ -300,6 +265,7 @@
             <a href="#pancakes" onclick="selectRecipe(event, 'pancakes')">Low Carb Choco Protein Pancakes</a>
             <a href="#icecream" onclick="selectRecipe(event, 'icecream')">Low Carb Vanilla Ice Cream</a>
             <a href="#matarpaneer" onclick="selectRecipe(event, 'matarpaneer')">Matar Paneer</a>
+            <a href="#chettinadchicken" onclick="selectRecipe(event, 'chettinadchicken')">Chettinad Chicken</a>
         </div>
     </nav>
     
@@ -322,25 +288,25 @@
 
             <h3>Ingredients</h3>
             <ul>
-                <li><label><input type="checkbox"> ¾ cup almond flour</label></li>
-                <li><label><input type="checkbox"> ¼ cup quick oats (blended into flour)</label></li>
-                <li><label><input type="checkbox"> 1 egg</label></li>
-                <li><label><input type="checkbox"> ⅔ cup 2% Lactose-Free Milk</label></li>
-                <li><label><input type="checkbox"> 1 scoop chocolate protein powder</label></li>
-                <li><label><input type="checkbox"> 1 tsp baking powder</label></li>
-                <li><label><input type="checkbox"> 1 tsp vanilla extract</label></li>
-                <li><label><input type="checkbox"> Pinch of salt</label></li>
-                <li><label><input type="checkbox"> 1 tbsp melted butter or coconut oil</label></li>
+                <li>¾ cup almond flour</li>
+                <li>¼ cup quick oats (blended into flour)</li>
+                <li>1 egg</li>
+                <li>⅔ cup 2% Lactose-Free Milk</li>
+                <li>1 scoop chocolate protein powder</li>
+                <li>1 tsp baking powder</li>
+                <li>1 tsp vanilla extract</li>
+                <li>Pinch of salt</li>
+                <li>1 tbsp melted butter or coconut oil</li>
             </ul>
 
             <h3>Instructions</h3>
-            <ol>
-                <li>Blend quick oats into a fine flour.</li>
-                <li>Mix all ingredients in a bowl or blender until smooth.</li>
-                <li>Let batter rest for 2–3 minutes.</li>
-                <li>Cook on a lightly oiled pan over medium-low heat.</li>
-                <li>Flip when bubbles form and cook until set.</li>
-            </ol>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Blend quick oats into a fine flour.</span></label></li>
+                <li><label><input type="checkbox"> <span>Mix all ingredients in a bowl or blender until smooth.</span></label></li>
+                <li><label><input type="checkbox"> <span>Let batter rest for 2–3 minutes.</span></label></li>
+                <li><label><input type="checkbox"> <span>Cook on a lightly oiled pan over medium-low heat.</span></label></li>
+                <li><label><input type="checkbox"> <span>Flip when bubbles form and cook until set.</span></label></li>
+            </ul>
         </div>
 
         <div class="recipe-card" id="icecream">
@@ -360,27 +326,27 @@
             
             <h3>Ingredients</h3>
             <ul>
-                <li><label><input type="checkbox"> 2¼ cups 2% Lactose-Free Milk</label></li>
-                <li><label><input type="checkbox"> 4 egg yolks</label></li>
-                <li><label><input type="checkbox"> 7 tbsp allulose (⅓ cup + 4 tbsp)</label></li>
-                <li><label><input type="checkbox"> 1–1½ tsp vanilla extract or 5–10 drops Capella Vanilla Bean Ice Cream</label></li>
-                <li><label><input type="checkbox"> Pinch of salt</label></li>
-                <li><label><input type="checkbox"> ¼ tsp xanthan gum</label></li>
+                <li>2¼ cups 2% Lactose-Free Milk</li>
+                <li>4 egg yolks</li>
+                <li>7 tbsp allulose (⅓ cup + 4 tbsp)</li>
+                <li>1–1½ tsp vanilla extract or 5–10 drops Capella Vanilla Bean Ice Cream</li>
+                <li>Pinch of salt</li>
+                <li>¼ tsp xanthan gum</li>
             </ul>
 
             <h3>Instructions</h3>
-            <ol>
-                <li>Whisk egg yolks and allulose until smooth and slightly pale.</li>
-                <li>Heat 2% Lactose-Free Milk until steaming (don’t boil).</li>
-                <li>Temper the eggs by slowly whisking the hot milk into the yolk mixture.</li>
-                <li>Cook the base: Return everything to the pan and cook on low, stirring constantly, until it lightly thickens (170–175°F / 77–80°C).</li>
-                <li>Flavor + stabilize: Remove from heat and whisk in vanilla, salt, and xanthan gum.</li>
-                <li>Chill the custard completely in the fridge (2–4 hours).</li>
-                <li>Freeze step 1: Pour into a shallow dish and freeze for 30–45 minutes.</li>
-                <li>Break up ice: Whisk or blend, then return to freezer.</li>
-                <li>Repeat mixing every 30–45 minutes for 3–4 rounds.</li>
-                <li>Final freeze until firm and scoopable.</li>
-            </ol>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Whisk egg yolks and allulose until smooth and slightly pale.</span></label></li>
+                <li><label><input type="checkbox"> <span>Heat 2% Lactose-Free Milk until steaming (don’t boil).</span></label></li>
+                <li><label><input type="checkbox"> <span>Temper the eggs by slowly whisking the hot milk into the yolk mixture.</span></label></li>
+                <li><label><input type="checkbox"> <span>Cook the base: Return everything to the pan and cook on low, stirring constantly, until it lightly thickens (170–175°F / 77–80°C).</span></label></li>
+                <li><label><input type="checkbox"> <span>Flavor + stabilize: Remove from heat and whisk in vanilla, salt, and xanthan gum.</span></label></li>
+                <li><label><input type="checkbox"> <span>Chill the custard completely in the fridge (2–4 hours).</span></label></li>
+                <li><label><input type="checkbox"> <span>Freeze step 1: Pour into a shallow dish and freeze for 30–45 minutes.</span></label></li>
+                <li><label><input type="checkbox"> <span>Break up ice: Whisk or blend, then return to freezer.</span></label></li>
+                <li><label><input type="checkbox"> <span>Repeat mixing every 30–45 minutes for 3–4 rounds.</span></label></li>
+                <li><label><input type="checkbox"> <span>Final freeze until firm and scoopable.</span></label></li>
+            </ul>
 
             <div class="notes">
                 <h3>Quick Notes</h3>
@@ -408,54 +374,173 @@
 
             <h3>Ingredients: To Saute & Puree</h3>
             <ul>
-                <li><label><input type="checkbox"> 1 tablespoon (15 ml) oil</label></li>
-                <li><label><input type="checkbox"> 1 to 2 green cardamoms (optional)</label></li>
-                <li><label><input type="checkbox"> 2 tablespoons ginger-garlic paste (substituted for fresh ginger/garlic)</label></li>
-                <li><label><input type="checkbox"> 1 cup (110 grams) onions cubed (1 large or 2 medium, weighed after chopping)</label></li>
-                <li><label><input type="checkbox"> 1½ to 1¾ cups (340 grams) tomatoes (2 to 3 large, fine chopped)</label></li>
-                <li><label><input type="checkbox"> 12 (20 grams) cashewnuts (or soaked almonds)</label></li>
-                <li><label><input type="checkbox"> ½ teaspoon salt (plus more to adjust at the end)</label></li>
+                <li>1 tablespoon (15 ml) oil</li>
+                <li>1 to 2 green cardamoms (optional)</li>
+                <li>2 tablespoons ginger-garlic paste (substituted for fresh ginger/garlic)</li>
+                <li>1 cup (110 grams) onions cubed (1 large or 2 medium, weighed after chopping)</li>
+                <li>1½ to 1¾ cups (340 grams) tomatoes (2 to 3 large, fine chopped)</li>
+                <li>12 (20 grams) cashewnuts (or soaked almonds)</li>
+                <li>½ teaspoon salt (plus more to adjust at the end)</li>
             </ul>
             
             <h3>Ingredients: For Matar Paneer Gravy</h3>
             <ul>
-                <li><label><input type="checkbox"> 1½ tablespoon (22 ml) ghee or oil (plus ½ tbsp more if you want to fry paneer)</label></li>
-                <li><label><input type="checkbox"> 1 inch cinnamon piece (dalchini, optional)</label></li>
-                <li><label><input type="checkbox"> 1 small bay leaf (tej patta, optional)</label></li>
-                <li><label><input type="checkbox"> ¼ teaspoon turmeric</label></li>
-                <li><label><input type="checkbox"> ¾ to 1 teaspoon Kashmiri red chili powder (adjust to taste)</label></li>
-                <li><label><input type="checkbox"> ¾ to 1 teaspoon garam masala (adjust to taste)</label></li>
-                <li><label><input type="checkbox"> ½ to ¾ teaspoon coriander powder</label></li>
-                <li><label><input type="checkbox"> 1 cup (160 grams) green peas (matar, frozen or fresh)</label></li>
-                <li><label><input type="checkbox"> 1 to 1¼ cup water (adjust as required)</label></li>
-                <li><label><input type="checkbox"> 1 green chili (deseeded & slit, optional)</label></li>
-                <li><label><input type="checkbox"> 250 grams (8 to 9 oz) paneer (diced to ¾ inch)</label></li>
-                <li><label><input type="checkbox"> 1 teaspoon kasuri methi (dried fenugreek leaves)</label></li>
-                <li><label><input type="checkbox"> 1 teaspoon sugar (optional, to balance the flavors)</label></li>
-                <li><label><input type="checkbox"> 2 tablespoon coriander leaves (cilantro, fine chopped)</label></li>
-                <li><label><input type="checkbox"> (Heavy cream/double cream is omitted)</label></li>
+                <li>1½ tablespoon (22 ml) ghee or oil (plus ½ tbsp more if you want to fry paneer)</li>
+                <li>1 inch cinnamon piece (dalchini, optional)</li>
+                <li>1 small bay leaf (tej patta, optional)</li>
+                <li>¼ teaspoon turmeric</li>
+                <li>¾ to 1 teaspoon Kashmiri red chili powder (adjust to taste)</li>
+                <li>¾ to 1 teaspoon garam masala (adjust to taste)</li>
+                <li>½ to ¾ teaspoon coriander powder</li>
+                <li>1 cup (160 grams) green peas (matar, frozen or fresh)</li>
+                <li>1 to 1¼ cup water (adjust as required)</li>
+                <li>1 green chili (deseeded & slit, optional)</li>
+                <li>250 grams (8 to 9 oz) paneer (diced to ¾ inch)</li>
+                <li>1 teaspoon kasuri methi (dried fenugreek leaves)</li>
+                <li>1 teaspoon sugar (optional, to balance the flavors)</li>
+                <li>2 tablespoon coriander leaves (cilantro, fine chopped)</li>
+                <li>(Heavy cream/double cream is omitted)</li>
             </ul>
 
             <h3>Instructions: Preparation (To Saute & Puree)</h3>
-            <ol>
-                <li>Pour oil to a hot pan and add green cardamoms (optional). Add the onions.</li>
-                <li>Saute the onions until they are about halfway cooked (translucent, &approx; 3-4 mins). Now, add the 2 tablespoons of ginger-garlic paste and continue sautéing until the onions are light golden (&approx; 2-3 mins more).</li>
-                <li>Add tomatoes, cashews and salt. Saute for 2 to 3 mins and cook covered until mushy and soft. If the pan dries out, add a splash of water while you cook.</li>
-                <li>Cool this and transfer to a blender. Blend to a smooth puree.</li>
-            </ol>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Pour oil to a hot pan and add green cardamoms (optional). Add the onions.</span></label></li>
+                <li><label><input type="checkbox"> <span>Saute the onions until they are about halfway cooked (translucent, &approx; 3-4 mins). Now, add the 2 tablespoons of ginger-garlic paste and continue sautéing until the onions are light golden (&approx; 2-3 mins more).</span></label></li>
+                <li><label><input type="checkbox"> <span>Add tomatoes, cashews and salt. Saute for 2 to 3 mins and cook covered until mushy and soft. If the pan dries out, add a splash of water while you cook.</span></label></li>
+                <li><label><input type="checkbox"> <span>Cool this and transfer to a blender. Blend to a smooth puree.</span></label></li>
+            </ul>
             
             <h3>Instructions: How to make Matar Paneer</h3>
-            <ol>
-                <li>Heat ghee or oil in the same pan. Add cinnamon & bay leaf, let sizzle in oil for a minute.</li>
-                <li>Lower the heat completely and stir in turmeric, chili powder, garam masala and coriander powder. Transfer the pureed onion tomato masala. (If your puree isn't smooth, strain it directly into the pan).</li>
-                <li>Saute for 2 to 3 mins until the masala comes together and turns thick. Stir in the rinsed green peas and water to make a gravy.</li>
-                <li>Bring to a boil and cook partially covered on a medium heat, until the gravy turns thick and traces of fat are visible (&approx; 10-12 mins).</li>
-                <li>Optionally fry paneer: Spread and heat ½ tablespoon ghee in a non-stick pan and place the diced paneer. Fry on a medium high heat until golden, for 3 mins. Turn them to the other side with a tong and repeat the process.</li>
-                <li>Crush kasuri methi in your palm and add it.</li>
-                <li>Add slit deseeded green chili, sugar (both optional) and paneer. Mix and taste test to adjust salt and garam masala.</li>
-                <li>Cook for 2 mins for the paneer to heat through and turn off. Garnish with coriander leaves.</li>
-                <li>Serve matar paneer with Basmati rice, jeera rice, naan or paratha.</li>
-            </ol>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Heat ghee or oil in the same pan. Add cinnamon & bay leaf, let sizzle in oil for a minute.</span></label></li>
+                <li><label><input type="checkbox"> <span>Lower the heat completely and stir in turmeric, chili powder, garam masala and coriander powder. Transfer the pureed onion tomato masala. (If your puree isn't smooth, strain it directly into the pan).</span></label></li>
+                <li><label><input type="checkbox"> <span>Saute for 2 to 3 mins until the masala comes together and turns thick. Stir in the rinsed green peas and water to make a gravy.</span></label></li>
+                <li><label><input type="checkbox"> <span>Bring to a boil and cook partially covered on a medium heat, until the gravy turns thick and traces of fat are visible (&approx; 10-12 mins).</span></label></li>
+                <li><label><input type="checkbox"> <span>Optionally fry paneer: Spread and heat ½ tablespoon ghee in a non-stick pan and place the diced paneer. Fry on a medium high heat until golden, for 3 mins. Turn them to the other side with a tong and repeat the process.</span></label></li>
+                <li><label><input type="checkbox"> <span>Crush kasuri methi in your palm and add it.</span></label></li>
+                <li><label><input type="checkbox"> <span>Add slit deseeded green chili, sugar (both optional) and paneer. Mix and taste test to adjust salt and garam masala.</span></label></li>
+                <li><label><input type="checkbox"> <span>Cook for 2 mins for the paneer to heat through and turn off. Garnish with coriander leaves.</span></label></li>
+                <li><label><input type="checkbox"> <span>Serve matar paneer with Basmati rice, jeera rice, naan or paratha.</span></label></li>
+            </ul>
+        </div>
+        
+        <div class="recipe-card" id="chettinadchicken">
+            <h2 class="recipe-title">Chettinad Chicken</h2>
+
+            <div class="nutrition-info">
+                <p><strong>Total Servings:</strong> Approx. 4 servings</p>
+                <table>
+                    <tr><th>Calories (Per Portion)</th><td>~395 kcal</td></tr>
+                    <tr><th>Protein</th><td>~30 g</td></tr>
+                    <tr><th>Carbs (Net)</th><td>~9 g</td></tr>
+                    <tr><th>Fiber</th><td>~4 g</td></tr>
+                    <tr><th>Fat</th><td>~26 g</td></tr>
+                    <tr><th>Added Sugar</th><td>0 g</td></tr>
+                </table>
+                <p style="font-style: italic; font-size: 0.75em; color: #888; margin-top: 5px;">*Estimated values based on standard ingredients and **4 servings**.</p>
+            </div>
+
+            <h3>Ingredients: For the Chicken Marination</h3>
+            <ul>
+                <li>1.1 lbs (approx. 500g) Chicken (bone-in or boneless, cut into 1.5” pieces)</li>
+                <li>½ tsp Turmeric powder</li>
+                <li>½ tsp Salt</li>
+                <li>1 Tbsp Lemon juice</li>
+            </ul>
+
+            <h3>Ingredients: For the Chettinad Masala (Roast and Grind)</h3>
+            <ul>
+                <li>2 Kashmiri Dry Red Chilies (Less spicy)</li>
+                <li>1 Tbsp Coriander seeds</li>
+                <li>1 tsp Fennel seeds</li>
+                <li>½ tsp Cumin seeds</li>
+                <li>½ tsp Black peppercorns</li>
+                <li>2 Green Cardamom pods</li>
+                <li>2 Cloves</li>
+                <li>½” Cinnamon stick</li>
+                <li>4 Cashew nuts</li>
+                <li>¼ cup Grated unsweetened coconut (fresh or frozen)</li>
+            </ul>
+
+            <h3>Ingredients: For the Curry</h3>
+            <ul>
+                <li>2 Tbsp Oil</li>
+                <li>1 Bay leaf (optional)</li>
+                <li>1 cup (1 large) Onion, finely chopped</li>
+                <li>1 Tbsp Ginger-garlic paste</li>
+                <li>2 sprigs Fresh curry leaves (divided)</li>
+                <li>1 ½ cups (2 medium) Tomatoes, finely chopped or pureed</li>
+                <li>½ tsp Salt (or to taste)</li>
+                <li>1 cup Carrots, peeled and cut into 1” chunks</li>
+                <li>1 cup Bell Peppers (Red or Green), cut into 1” squares</li>
+                <li>½ to 1 cup Hot water</li>
+                <li>Fresh coriander leaves, chopped (for garnish)</li>
+            </ul>
+
+            <h3>Instructions: Preparation (Steps 1 & 2)</h3>
+            
+            <h4>Step 1: Marinate the Chicken</h4>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>In a medium bowl, combine 1.1 lbs of chicken pieces with ½ tsp turmeric powder, ½ tsp salt, and 1 tbsp lemon juice.</span></label></li>
+                <li><label><input type="checkbox"> <span>Use your hands or a spoon to mix thoroughly, ensuring every piece of chicken is coated.</span></label></li>
+                <li><label><input type="checkbox"> <span>Cover the bowl (with a lid or plastic wrap) and place it in the refrigerator to marinate for a minimum of 30 mins.</span></label></li>
+                <li><label><input type="checkbox"> <span>If you have time, marinating for 2 hours will enhance flavor.</span></label></li>
+            </ul>
+
+            <h4>Step 2: Prepare the Chettinad Masala Paste</h4>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Heat a heavy-bottomed pan or skillet over low heat. Do not add any oil.</span></label></li>
+                <li><label><input type="checkbox"> <span>Add the 2 dry red chilies, 1 tbsp coriander seeds, 1 tsp fennel seeds, ½ tsp cumin seeds, ½ tsp black peppercorns, 2 cardamom pods, 2 cloves, and ½” cinnamon stick.</span></label></li>
+                <li><label><input type="checkbox"> <span>Dry roast, stirring constantly, for about 2 mins, until the spices are highly fragrant.</span></label></li>
+                <li><label><input type="checkbox"> <span>Add the ¼ cup grated coconut and 4 cashew nuts. Continue roasting until the coconut just starts to turn a light golden-brown (about 1-2 more mins). Do not let the coconut burn.</span></label></li>
+                <li><label><input type="checkbox"> <span>Immediately transfer the roasted mixture to a plate to cool completely (about 5-10 mins).</span></label></li>
+                <li><label><input type="checkbox"> <span>Once cool, transfer the mixture to a small spice grinder or blender. Add approximately 2-3 tbsp of plain water.</span></label></li>
+                <li><label><input type="checkbox"> <span>Grind until you achieve a very smooth, thick paste. Add a tiny splash more water only if necessary to help the blades move. Set the smooth paste aside.</span></label></li>
+            </ul>
+            
+            <h3>Instructions: Cooking the Curry (Steps 3-7)</h3>
+            
+            <h4>Step 3: Build the Base</h4>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Heat 2 tbsp of oil in a large pot or heavy-bottomed pan over medium heat.</span></label></li>
+                <li><label><input type="checkbox"> <span>If using, add the bay leaf.</span></label></li>
+                <li><label><input type="checkbox"> <span>Add the 1 cup of chopped onions and half of the fresh curry leaves.</span></label></li>
+                <li><label><input type="checkbox"> <span>Sauté, stirring frequently, for 6-8 mins, until the onions are soft and light golden brown.</span></label></li>
+                <li><label><input type="checkbox"> <span>Stir in the 1 tbsp of ginger-garlic paste. Cook for about 2 mins, until the raw, pungent smell of the paste disappears.</span></label></li>
+                <li><label><input type="checkbox"> <span>Add the 1.5 cups of chopped or pureed tomatoes. Cook over medium heat for 5-7 mins, stirring occasionally.</span></label></li>
+                <li><label><input type="checkbox"> <span>The tomatoes should break down completely, and the oil should start to separate and gather around the edges.</span></label></li>
+                <li><label><input type="checkbox"> <span>Reduce the heat to low. Stir in the prepared Chettinad masala paste.</span></label></li>
+                <li><label><input type="checkbox"> <span>Cook for 2-3 mins, stirring constantly to prevent the paste from sticking to the bottom.</span></label></li>
+            </ul>
+
+            <h4>Step 4: Add Chicken and Carrots</h4>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Add the marinated chicken pieces and the 1 cup of 1” carrot chunks to the pot.</span></label></li>
+                <li><label><input type="checkbox"> <span>Increase the heat to medium-high. Fry the chicken and carrots for about 4-5 mins, tossing occasionally, until the chicken pieces are lightly seared on the outside and well-coated with the masala base.</span></label></li>
+            </ul>
+
+            <h4>Step 5: Simmer (Part 1 - Cooking Carrots)</h4>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Stir in the remaining curry leaves and ½ cup of hot water.</span></label></li>
+                <li><label><input type="checkbox"> <span>Add ½ tsp salt (or adjust to taste, remembering the chicken was already salted).</span></label></li>
+                <li><label><input type="checkbox"> <span>Bring the curry to a gentle simmer, then reduce the heat to low.</span></label></li>
+                <li><label><input type="checkbox"> <span>Cover the pot tightly and let the chicken and carrots cook for 15 mins.</span></label></li>
+            </ul>
+
+            <h4>Step 6: Add Bell Peppers</h4>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Uncover the pot. Stir in the 1 cup of bell pepper squares.</span></label></li>
+                <li><label><input type="checkbox"> <span>If the gravy looks too thick, add up to another ½ cup of hot water to reach your desired consistency.</span></label></li>
+                <li><label><input type="checkbox"> <span>Cover the pot again and continue to simmer for an additional 5-10 mins.</span></label></li>
+                <li><label><input type="checkbox"> <span>The chicken should be cooked through, the carrots should be tender, and the bell peppers should still have a slight bite (not mushy).</span></label></li>
+            </ul>
+
+            <h4>Step 7: Finish and Serve</h4>
+            <ul class="instructions-list">
+                <li><label><input type="checkbox"> <span>Remove the pot from the heat. Taste the gravy and adjust salt if necessary.</span></label></li>
+                <li><label><input type="checkbox"> <span>Garnish generously with the chopped fresh coriander leaves.</span></label></li>
+                <li><label><input type="checkbox"> <span>Serve hot with rice or bread.</span></label></li>
+            </ul>
         </div>
         
         <div id="default-view">
@@ -470,37 +555,22 @@
         const recipeLinksContainer = document.getElementById('recipe-links');
         const recipeLinks = recipeLinksContainer.getElementsByTagName('a');
 
-        // Toggles the 'sidebar-open' class on the body to show/hide the menu
         function toggleMenu() {
             body.classList.toggle('sidebar-open');
         }
 
-        // Handles recipe selection, scrolling, and menu closing
         function selectRecipe(event, id) {
-            // Only prevent default if an actual hash is being set (not for the Home button)
-            if (id !== '') {
-                event.preventDefault(); 
-            }
-            
-            // Set the hash, clearing it for the home button
+            if (id !== '') { event.preventDefault(); }
             window.location.hash = id;
-            
-            // Fix using a small delay to reset the scroll position
-            setTimeout(() => {
-                window.scrollTo(0, 0); 
-            }, 1); 
-
+            setTimeout(() => { window.scrollTo(0, 0); }, 1); 
             body.classList.remove('sidebar-open');
         }
 
-        // Filters recipe links based on search input (New Function)
         function filterRecipes() {
             const filter = searchInput.value.toUpperCase();
-            
             for (let i = 0; i < recipeLinks.length; i++) {
                 const link = recipeLinks[i];
                 const textValue = link.textContent || link.innerText;
-                
                 if (textValue.toUpperCase().indexOf(filter) > -1) {
                     link.style.display = "";
                 } else {
@@ -509,7 +579,6 @@
             }
         }
 
-        // Attach event listener to the hamburger button
         toggleButton.addEventListener('click', toggleMenu);
     </script>
 
