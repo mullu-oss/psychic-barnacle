@@ -178,7 +178,8 @@
         #icecream:target ~ #default-view,
         #matarpaneer:target ~ #default-view,
         #chettinadchicken:target ~ #default-view,
-        #brownies:target ~ #default-view { display: none; }
+        #brownies:target ~ #default-view,
+        #kungpao:target ~ #default-view { display: none; }
 
         /* --- Content Formatting --- */
         .recipe-title { 
@@ -249,7 +250,6 @@
 <body>
 
     <header>
-        <!-- Menu toggle button -->
         <button id="menu-toggle" aria-label="Open Navigation Menu">☰</button>
         <h1>My Recipe Book</h1>
     </header>
@@ -270,56 +270,11 @@
             <a href="#icecream" onclick="selectRecipe(event, 'icecream')">Low Carb Vanilla Ice Cream</a>
             <a href="#matarpaneer" onclick="selectRecipe(event, 'matarpaneer')">Matar Paneer</a>
             <a href="#chettinadchicken" onclick="selectRecipe(event, 'chettinadchicken')">Chettinad Chicken</a>
-			<a href="#kungpao" onclick="selectRecipe(event,'kungpao')">Kung Pao Chicken</a>
+            <a href="#kungpao" onclick="selectRecipe(event, 'kungpao')">Kung Pao Chicken</a>
         </div>
     </nav>
     
     <div class="content-wrapper">
-		<div class="recipe-card" id="kungpao">
-            <h2 class="recipe-title">Kung Pao Chicken</h2>
-            
-            <div class="nutrition-info">
-                <p><strong>Total Servings:</strong> 4 Servings</p>
-                <table>
-                    <tr><th>Calories (Per Serving)</th><td>420 kcal</td></tr>
-                    <tr><th>Protein</th><td>32 g</td></tr>
-                    <tr><th>Carbs (Net)</th><td>7 g</td></tr>
-                    <tr><th>Fiber</th><td>3 g</td></tr>
-                    <tr><th>Fat</th><td>28 g</td></tr>
-                    <tr><th>Added Sugar</th><td>0 g</td></tr>
-                </table>
-            </div>
-
-            <h3>Ingredients</h3>
-            <ul>
-                <li>Chicken thighs or breast: 1½ lbs, cut into bite-sized pieces</li>
-                <li>Soy sauce: 4 tbsp</li>
-                <li>Rice vinegar (or apple cider vinegar) – 1½ tbsp</li>
-                <li>Garlic: 4 cloves, minced</li>
-                <li>Ginger – 1½ tsp, minced</li>
-				<li>Olive oil – 3 tbsp</li>
-				<li>Zucchini – 2 medium, sliced into half-moons</li>
-				<li>Bell peppers – 2 large, cut into chunks</li>
-				<li>Peanuts – ½ cup</li>
-				<li>Chili flakes – ¼ tsp </li>
-				<li>Sichuan peppercorns – ¼ tsp, lightly toasted and crushed</li>
-				<li>Sesame oil – 1 tsp for finishing</li>
-				<li>Xanthan gum – start with ¼ tsp, add more only if needed</li>
-            </ul>
-
-            <h3>Cooking Instructions</h3>
-			
-			<ul class="instructions-list">
-				<li><label><input type="checkbox"> <span>Toast peppercorns: In a dry pan, toast Sichuan peppercorns for 30–60 seconds until fragrant. Crush lightly.</span></label></li>
-				<li><label><input type="checkbox"> <span>Marinate chicken: Toss chicken in 2 tbsp soy sauce and vinegar for 10–15 minutes.</span></label></li>
-				<li><label><input type="checkbox"> <span>Cook chicken: Heat olive oil in a wok/skillet. Add toasted peppercorns, then stir-fry chicken until golden and cooked through.</span></label></li>
-				<li><label><input type="checkbox"> <span>Add aromatics: Stir in garlic and ginger until fragrant.</span></label></li>
-				<li><label><input type="checkbox"> <span>Add veggies: Toss in zucchini and bell peppers, cooking until crisp-tender.</span></label></li>
-				<li><label><input type="checkbox"> <span>Make sauce: Add remaining soy sauce, vinegar, and a splash of water. Sprinkle in xanthan gum gradually while stirring to thicken.</span></label></li>
-				<li><label><input type="checkbox"> <span>Finish: Stir in peanuts, drizzle sesame oil, and serve hot.</span></label></li>
-			</ul>
-		</div>
-			
         <div class="recipe-card" id="brownies">
             <h2 class="recipe-title">Fudgy Protein Brownies</h2>
             
@@ -347,6 +302,7 @@
                 <li>Vanilla Extract: 1 tsp (5 mL)</li>
             </ul>
             
+            <h3>Ingredients</h3>
             <h4>Dry Mix & Mix-Ins</h4>
             <ul>
                 <li>Chocolate Whey Protein Powder: ¾ cup (75 g)</li>
@@ -519,7 +475,7 @@
                 <li>(Heavy cream/double cream is omitted)</li>
             </ul>
             <h3>Instructions</h3>
-            <h4>Preparation (To Saute & Puree)</h4>
+            <h4>Preparation (To Saute & Puree) </h4>
             <ul class="instructions-list">
                 <li><label><input type="checkbox"> <span>Pour oil to a hot pan and add green cardamoms (optional). Add the onions.</span></label></li>
                 <li><label><input type="checkbox"> <span>Saute the onions until they are about halfway cooked (translucent, &approx; 3-4 mins). Now, add the 2 tablespoons of ginger-garlic paste and continue sautéing until the onions are light golden (&approx; 2-3 mins more).</span></label></li>
@@ -655,8 +611,50 @@
                 <li><label><input type="checkbox"> <span>Serve hot with rice or bread.</span></label></li>
             </ul>
         </div>
-        <!-- Existing Recipes end here -->
-        
+        <div class="recipe-card" id="kungpao">
+            <h2 class="recipe-title">Kung Pao Chicken</h2>
+            
+            <div class="nutrition-info">
+                <p><strong>Total Servings:</strong> 4 Servings</p>
+                <table>
+                    <tr><th>Calories (Per Serving)</th><td>420 kcal</td></tr>
+                    <tr><th>Protein</th><td>32 g</td></tr>
+                    <tr><th>Carbs (Net)</th><td>7 g</td></tr>
+                    <tr><th>Fiber</th><td>3 g</td></tr>
+                    <tr><th>Fat</th><td>28 g</td></tr>
+                    <tr><th>Added Sugar</th><td>0 g</td></tr>
+                </table>
+            </div>
+
+            <h3>Ingredients</h3>
+            <ul>
+                <li>Chicken thighs or breast: 1½ lbs, cut into bite-sized pieces</li>
+                <li>Soy sauce: 4 tbsp</li>
+                <li>Rice vinegar (or apple cider vinegar) – 1½ tbsp</li>
+                <li>Garlic: 4 cloves, minced</li>
+                <li>Ginger – 1½ tsp, minced</li>
+				<li>Olive oil – 3 tbsp</li>
+				<li>Zucchini – 2 medium, sliced into half-moons</li>
+				<li>Bell peppers – 2 large, cut into chunks</li>
+				<li>Peanuts – ½ cup</li>
+				<li>Chili flakes – ¼ tsp </li>
+				<li>Sichuan peppercorns – ¼ tsp, lightly toasted and crushed</li>
+				<li>Sesame oil – 1 tsp for finishing</li>
+				<li>Xanthan gum – start with ¼ tsp, add more only if needed</li>
+            </ul>
+
+            <h3>Cooking Instructions</h3>
+			
+			<ul class="instructions-list">
+				<li><label><input type="checkbox"> <span>Toast peppercorns: In a dry pan, toast Sichuan peppercorns for 30–60 seconds until fragrant. Crush lightly.</span></label></li>
+				<li><label><input type="checkbox"> <span>Marinate chicken: Toss chicken in 2 tbsp soy sauce and vinegar for 10–15 minutes.</span></label></li>
+				<li><label><input type="checkbox"> <span>Cook chicken: Heat olive oil in a wok/skillet. Add toasted peppercorns, then stir-fry chicken until golden and cooked through.</span></label></li>
+				<li><label><input type="checkbox"> <span>Add aromatics: Stir in garlic and ginger until fragrant.</span></label></li>
+				<li><label><input type="checkbox"> <span>Add veggies: Toss in zucchini and bell peppers, cooking until crisp-tender.</span></label></li>
+				<li><label><input type="checkbox"> <span>Make sauce: Add remaining soy sauce, vinegar, and a splash of water. Sprinkle in xanthan gum gradually while stirring to thicken.</span></label></li>
+				<li><label><input type="checkbox"> <span>Finish: Stir in peanuts, drizzle sesame oil, and serve hot.</span></label></li>
+			</ul>
+		</div>
         <div id="default-view">
             <h2>Welcome to My Recipe Book!</h2>
             <p>Tap the ☰ icon to open the navigation sidebar and select a recipe.</p>
