@@ -13,7 +13,7 @@
             --accent-color: #e24a90;
             --sidebar-width: 250px;
             --header-height: 55px;
-            
+
             --cookbook-dark-bg: #581845;
             --cookbook-medium-bg: #884B79;
             --cookbook-light-text: #F0E6D2;
@@ -96,7 +96,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             flex-shrink: 0; 
         }
-        
+
         .sidebar-btn {
             background: none;
             border: none;
@@ -110,7 +110,7 @@
             justify-content: center;
             transition: color 0.2s;
         }
-        
+
         #sidebar-controls a { color: white; text-decoration: none; }
         .sidebar-btn:hover { color: var(--primary-color); }
         #home-icon, #close-icon { font-size: var(--icon-size); color: white; }
@@ -162,7 +162,7 @@
             max-width: 600px;
         }
         .recipe-card:target { display: block; }
-        
+
         #default-view {
             display: block;
             text-align: center;
@@ -172,7 +172,7 @@
             background-color: var(--card-bg);
             border-radius: 12px;
         }
-        
+
         /* Update the selector to hide default view when any recipe is selected */
         #pancakes:target ~ #default-view,
         #icecream:target ~ #default-view,
@@ -180,7 +180,7 @@
         #chettinadchicken:target ~ #default-view,
         #brownies:target ~ #default-view,
         #kungpao:target ~ #default-view { display: none; }
-
+		
         /* --- Content Formatting --- */
         .recipe-title { 
             font-size: 1.5rem; 
@@ -194,19 +194,19 @@
         .notes h3 { color: var(--accent-color); }
 
         /* --- Lists Styling --- */
-        
+
         /* 1. Ingredients: Bulleted Lists */
         ul { 
             padding-left: 20px; 
             list-style-type: disc; /* Ensure bullets show */
         }
-        
+
         /* 2. Instructions: Checkbox Lists (No bullets/numbers) */
         .instructions-list {
             padding-left: 0;
             list-style-type: none;
         }
-        
+
         .instructions-list li {
             margin-bottom: 8px;
         }
@@ -231,7 +231,7 @@
             color: #888;
             transition: color 0.3s;
         }
-        
+
         /* Nutrition Info Table */
         .nutrition-info {
             border: 1px solid #e0e0e0;
@@ -250,10 +250,11 @@
 <body>
 
     <header>
+        <!-- Menu toggle button -->
         <button id="menu-toggle" aria-label="Open Navigation Menu">☰</button>
         <h1>My Recipe Book</h1>
     </header>
-    
+
     <nav id="sidebar">
         <div id="sidebar-controls">
             <a href="#" id="home-icon" class="sidebar-btn" title="Go Home" onclick="selectRecipe(event, '')">🏠</a>
@@ -265,19 +266,65 @@
         </div>
 
         <div id="recipe-links">
+            <!-- Existing recipe links -->
             <a href="#brownies" onclick="selectRecipe(event, 'brownies')">Fudgy Protein Brownies</a>
             <a href="#pancakes" onclick="selectRecipe(event, 'pancakes')">Low Carb Choco Protein Pancakes</a>
             <a href="#icecream" onclick="selectRecipe(event, 'icecream')">Low Carb Vanilla Ice Cream</a>
             <a href="#matarpaneer" onclick="selectRecipe(event, 'matarpaneer')">Matar Paneer</a>
             <a href="#chettinadchicken" onclick="selectRecipe(event, 'chettinadchicken')">Chettinad Chicken</a>
-            <a href="#kungpao" onclick="selectRecipe(event, 'kungpao')">Kung Pao Chicken</a>
+			<a href="#kungpao" onclick="selectRecipe(event,'kungpao')">Kung Pao Chicken</a>
         </div>
     </nav>
-    
+
     <div class="content-wrapper">
+		<div class="recipe-card" id="kungpao">
+            <h2 class="recipe-title">Kung Pao Chicken</h2>
+
+            <div class="nutrition-info">
+                <p><strong>Total Servings:</strong> 4 Servings</p>
+                <table>
+                    <tr><th>Calories (Per Serving)</th><td>420 kcal</td></tr>
+                    <tr><th>Protein</th><td>32 g</td></tr>
+                    <tr><th>Carbs (Net)</th><td>7 g</td></tr>
+                    <tr><th>Fiber</th><td>3 g</td></tr>
+                    <tr><th>Fat</th><td>28 g</td></tr>
+                    <tr><th>Added Sugar</th><td>0 g</td></tr>
+                </table>
+            </div>
+
+            <h3>Ingredients</h3>
+            <ul>
+                <li>Chicken thighs or breast: 1½ lbs, cut into bite-sized pieces</li>
+                <li>Soy sauce: 4 tbsp</li>
+                <li>Rice vinegar (or apple cider vinegar) – 1½ tbsp</li>
+                <li>Garlic: 4 cloves, minced</li>
+                <li>Ginger – 1½ tsp, minced</li>
+				<li>Olive oil – 3 tbsp</li>
+				<li>Zucchini – 2 medium, sliced into half-moons</li>
+				<li>Bell peppers – 2 large, cut into chunks</li>
+				<li>Peanuts – ½ cup</li>
+				<li>Chili flakes – ¼ tsp </li>
+				<li>Sichuan peppercorns – ¼ tsp, lightly toasted and crushed</li>
+				<li>Sesame oil – 1 tsp for finishing</li>
+				<li>Xanthan gum – start with ¼ tsp, add more only if needed</li>
+            </ul>
+
+            <h3>Cooking Instructions</h3>
+
+			<ul class="instructions-list">
+				<li><label><input type="checkbox"> <span>Toast peppercorns: In a dry pan, toast Sichuan peppercorns for 30–60 seconds until fragrant. Crush lightly.</span></label></li>
+				<li><label><input type="checkbox"> <span>Marinate chicken: Toss chicken in 2 tbsp soy sauce and vinegar for 10–15 minutes.</span></label></li>
+				<li><label><input type="checkbox"> <span>Cook chicken: Heat olive oil in a wok/skillet. Add toasted peppercorns, then stir-fry chicken until golden and cooked through.</span></label></li>
+				<li><label><input type="checkbox"> <span>Add aromatics: Stir in garlic and ginger until fragrant.</span></label></li>
+				<li><label><input type="checkbox"> <span>Add veggies: Toss in zucchini and bell peppers, cooking until crisp-tender.</span></label></li>
+				<li><label><input type="checkbox"> <span>Make sauce: Add remaining soy sauce, vinegar, and a splash of water. Sprinkle in xanthan gum gradually while stirring to thicken.</span></label></li>
+				<li><label><input type="checkbox"> <span>Finish: Stir in peanuts, drizzle sesame oil, and serve hot.</span></label></li>
+			</ul>
+		</div>
+
         <div class="recipe-card" id="brownies">
             <h2 class="recipe-title">Fudgy Protein Brownies</h2>
-            
+
             <div class="nutrition-info">
                 <p><strong>Total Servings:</strong> 16 servings</p>
                 <table>
@@ -301,8 +348,7 @@
                 <li>Allulose: 1 cup (150 g)</li>
                 <li>Vanilla Extract: 1 tsp (5 mL)</li>
             </ul>
-            
-            <h3>Ingredients</h3>
+
             <h4>Dry Mix & Mix-Ins</h4>
             <ul>
                 <li>Chocolate Whey Protein Powder: ¾ cup (75 g)</li>
@@ -315,27 +361,27 @@
             </ul>
 
             <h3>Cooking Instructions (Detailed)</h3>
-            
+
             <h4>Preparation & Melting</h4>
             <ul class="instructions-list">
                 <li><label><input type="checkbox"> <span>Preheat the oven to 350 F (175 C) and position the rack to the middle.</span></label></li>
                 <li><label><input type="checkbox"> <span>Line an 8x8 inch square baking pan with parchment paper so that the bottom and two opposite sides are mostly covered, leaving an overhang for easy removal. Spray lightly with baking spray.</span></label></li>
                 <li><label><input type="checkbox"> <span>Melt the Chocolate Base: Combine the measured dark chocolate and butter/oil in a small bowl placed over slowly simmering water (creating a double boiler). When most of the chocolate has melted, remove the bowl and stir until smooth and glossy. Set aside to cool slightly.</span></label></li>
             </ul>
-            
+
             <h4>Combine Wet Ingredients</h4>
             <ul class="instructions-list">
                 <li><label><input type="checkbox"> <span>In a medium bowl, whisk together the Allulose, 1 whole egg, 2 egg whites, vanilla extract, and your chosen fat-substitute (applesauce, yogurt, or puree) until well combined.</span></label></li>
                 <li><label><input type="checkbox"> <span>Gradually beat in the slightly cooled chocolate/butter mixture until smooth.</span></label></li>
             </ul>
-            
+
             <h4>Mix Dry Ingredients & Fold</h4>
             <ul class="instructions-list">
                 <li><label><input type="checkbox"> <span>In a separate bowl, thoroughly whisk together the protein powder, almond flour, cocoa powder, ground chia seeds, baking soda, and cream of tartar.</span></label></li>
                 <li><label><input type="checkbox"> <span>Add the dry mixture to the wet mixture. Starting on low speed and gradually getting faster, mix until thoroughly combined and the batter is thick. Do not overmix.</span></label></li>
                 <li><label><input type="checkbox"> <span>Gently fold in the sugar-free chocolate chips.</span></label></li>
             </ul>
-            
+
             <h4>Bake & Cool</h4>
             <ul class="instructions-list">
                 <li><label><input type="checkbox"> <span>Spread the thick batter evenly into the prepared pan.</span></label></li>
@@ -343,10 +389,10 @@
                 <li><label><input type="checkbox"> <span>Cool completely in the pan on a wire rack. Run a sharp thin knife around the edge and lift the brownies out of the pan with the parchment when cool.</span></label></li>
             </ul>
         </div>
-        
+
         <div class="recipe-card" id="pancakes">
             <h2 class="recipe-title">Low Carb Choco Protein Pancakes</h2>
-            
+
             <div class="nutrition-info">
                 <p><strong>Total Servings:</strong> 8 pancakes</p>
                 <table>
@@ -396,7 +442,7 @@
                     <tr><th>Added Sugar</th><td>0 g</td></tr>
                 </table>
             </div>
-            
+
             <h3>Ingredients</h3>
             <ul>
                 <li>2¼ cups 2% Lactose-Free Milk</li>
@@ -429,7 +475,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="recipe-card" id="matarpaneer">
             <h2 class="recipe-title">Matar Paneer</h2>
 
@@ -475,7 +521,7 @@
                 <li>(Heavy cream/double cream is omitted)</li>
             </ul>
             <h3>Instructions</h3>
-            <h4>Preparation (To Saute & Puree) </h4>
+            <h4>Preparation (To Saute & Puree)</h4>
             <ul class="instructions-list">
                 <li><label><input type="checkbox"> <span>Pour oil to a hot pan and add green cardamoms (optional). Add the onions.</span></label></li>
                 <li><label><input type="checkbox"> <span>Saute the onions until they are about halfway cooked (translucent, &approx; 3-4 mins). Now, add the 2 tablespoons of ginger-garlic paste and continue sautéing until the onions are light golden (&approx; 2-3 mins more).</span></label></li>
@@ -495,7 +541,7 @@
                 <li><label><input type="checkbox"> <span>Serve matar paneer with Basmati rice, jeera rice, naan or paratha.</span></label></li>
             </ul>
         </div>
-        
+
         <div class="recipe-card" id="chettinadchicken">
             <h2 class="recipe-title">Chettinad Chicken</h2>
 
@@ -568,7 +614,7 @@
                 <li><label><input type="checkbox"> <span>Once cool, transfer the mixture to a small spice grinder or blender. Add approximately 2-3 tbsp of plain water.</span></label></li>
                 <li><label><input type="checkbox"> <span>Grind until you achieve a very smooth, thick paste. Add a tiny splash more water only if necessary to help the blades move. Set the smooth paste aside.</span></label></li>
             </ul>
-                  
+
             <h4>Step 3: Build the Base</h4>
             <ul class="instructions-list">
                 <li><label><input type="checkbox"> <span>Heat 2 tbsp of oil in a large pot or heavy-bottomed pan over medium heat.</span></label></li>
@@ -611,57 +657,15 @@
                 <li><label><input type="checkbox"> <span>Serve hot with rice or bread.</span></label></li>
             </ul>
         </div>
-        <div class="recipe-card" id="kungpao">
-            <h2 class="recipe-title">Kung Pao Chicken</h2>
-            
-            <div class="nutrition-info">
-                <p><strong>Total Servings:</strong> 4 Servings</p>
-                <table>
-                    <tr><th>Calories (Per Serving)</th><td>420 kcal</td></tr>
-                    <tr><th>Protein</th><td>32 g</td></tr>
-                    <tr><th>Carbs (Net)</th><td>7 g</td></tr>
-                    <tr><th>Fiber</th><td>3 g</td></tr>
-                    <tr><th>Fat</th><td>28 g</td></tr>
-                    <tr><th>Added Sugar</th><td>0 g</td></tr>
-                </table>
-            </div>
+        <!-- Existing Recipes end here -->
 
-            <h3>Ingredients</h3>
-            <ul>
-                <li>Chicken thighs or breast: 1½ lbs, cut into bite-sized pieces</li>
-                <li>Soy sauce: 4 tbsp</li>
-                <li>Rice vinegar (or apple cider vinegar) – 1½ tbsp</li>
-                <li>Garlic: 4 cloves, minced</li>
-                <li>Ginger – 1½ tsp, minced</li>
-				<li>Olive oil – 3 tbsp</li>
-				<li>Zucchini – 2 medium, sliced into half-moons</li>
-				<li>Bell peppers – 2 large, cut into chunks</li>
-				<li>Peanuts – ½ cup</li>
-				<li>Chili flakes – ¼ tsp </li>
-				<li>Sichuan peppercorns – ¼ tsp, lightly toasted and crushed</li>
-				<li>Sesame oil – 1 tsp for finishing</li>
-				<li>Xanthan gum – start with ¼ tsp, add more only if needed</li>
-            </ul>
-
-            <h3>Cooking Instructions</h3>
-			
-			<ul class="instructions-list">
-				<li><label><input type="checkbox"> <span>Toast peppercorns: In a dry pan, toast Sichuan peppercorns for 30–60 seconds until fragrant. Crush lightly.</span></label></li>
-				<li><label><input type="checkbox"> <span>Marinate chicken: Toss chicken in 2 tbsp soy sauce and vinegar for 10–15 minutes.</span></label></li>
-				<li><label><input type="checkbox"> <span>Cook chicken: Heat olive oil in a wok/skillet. Add toasted peppercorns, then stir-fry chicken until golden and cooked through.</span></label></li>
-				<li><label><input type="checkbox"> <span>Add aromatics: Stir in garlic and ginger until fragrant.</span></label></li>
-				<li><label><input type="checkbox"> <span>Add veggies: Toss in zucchini and bell peppers, cooking until crisp-tender.</span></label></li>
-				<li><label><input type="checkbox"> <span>Make sauce: Add remaining soy sauce, vinegar, and a splash of water. Sprinkle in xanthan gum gradually while stirring to thicken.</span></label></li>
-				<li><label><input type="checkbox"> <span>Finish: Stir in peanuts, drizzle sesame oil, and serve hot.</span></label></li>
-			</ul>
-		</div>
         <div id="default-view">
             <h2>Welcome to My Recipe Book!</h2>
             <p>Tap the ☰ icon to open the navigation sidebar and select a recipe.</p>
         </div>
 
     </div> 
-    
+
     <script>
         const toggleButton = document.getElementById('menu-toggle');
         const body = document.body;
@@ -698,7 +702,7 @@
         }
 
         toggleButton.addEventListener('click', toggleMenu);
-        
+
         // Initial check for hash on page load to display the correct recipe
         if (window.location.hash) {
              const hash = window.location.hash.substring(1);
@@ -708,7 +712,7 @@
                 window.location.hash = ''; // Clear hash if invalid
              }
         }
-        
+
     </script>
 
 </body>
